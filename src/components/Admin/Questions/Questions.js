@@ -135,19 +135,29 @@ const Questions = (props) => {
 
         //submit question apiCreateQuestionForQuiz(quiz_id, description, questionImage)
         // , apiCreateAnswersForQuestion(description, correct_answer, question_id)
-        await Promise.all(questions.map(async (question) => {
+        // await Promise.all(questions.map(async (question) => {
+        //     const q = await apiCreateQuestionForQuiz(
+        //         +selectedQuiz.value,
+        //         question.description,
+        //         question.imageFile)
+
+        //     await Promise.all(question.answers.map(async (answer) => {
+        //         await apiCreateAnswersForQuestion(
+        //             answer.description, answer.isCorrect, q.DT.id
+        //         )
+        //     }))
+        // }));
+        for (const question of questions) {
             const q = await apiCreateQuestionForQuiz(
                 +selectedQuiz.value,
                 question.description,
                 question.imageFile)
-
-            await Promise.all(question.answers.map(async (answer) => {
+            for (const answer of question.answers) {
                 await apiCreateAnswersForQuestion(
                     answer.description, answer.isCorrect, q.DT.id
                 )
-            }))
-        }));
-
+            }
+        }
     }
     const handlePreviewImage = () => {
 
