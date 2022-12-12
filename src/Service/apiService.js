@@ -58,7 +58,7 @@ const apiSaveNewQuiz = (description, name, type, image) => {
     return axios.post('api/v1/quiz', data);
 }
 const apiGetQuizAllForAdmin = () => {
-    return axios.get(`/api/v1/quiz/all`)
+    return axios.get(`api/v1/quiz/all`)
 }
 const apiCreateQuestionForQuiz = (quiz_id, description, questionImage) => {
     //submit data
@@ -77,11 +77,21 @@ const apiCreateAnswersForQuestion = (description, correct_answer, question_id) =
 
     return axios.post('api/v1/answer', data);
 }
+const apiAssignQuiztoUser = (quizId, userId) => {
+    const data = {
+        quizId: quizId,
+        userId: userId
+    }
+    return axios.post('api/v1/quiz-assign-to-user', data);
+}
+const apiGetQuizWithQA = (quizId) => {
+    return axios.get(`api/v1/quiz-with-qa/${quizId}`)
+}
 export {
     apiCreatNewUser, apiGetAllUsers, apiUpdateUser,
     apiDeleteUser, apiGetAllUsersWithPaginate, postLogin,
     postRegister, apiGetQuizByUser, apiGetQuizById,
     apiSubmitResult, apiSaveNewQuiz, apiGetQuizAllForAdmin,
-    apiCreateQuestionForQuiz, apiCreateAnswersForQuestion
-
+    apiCreateQuestionForQuiz, apiCreateAnswersForQuestion,
+    apiAssignQuiztoUser, apiGetQuizWithQA
 }

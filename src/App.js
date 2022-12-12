@@ -3,10 +3,8 @@ import Header from './components/Header/Header';
 import User from './components/User/User';
 import { Link, Outlet } from "react-router-dom";
 import { Provider } from 'react-redux';
-
+import PerfectScrollbar from 'react-perfect-scrollbar'
 const App = () => {
-
-
   return (
 
     <>
@@ -19,15 +17,14 @@ const App = () => {
 
           </div>
           <div className='app-content'>
-            <Outlet />
+            <PerfectScrollbar>
+              <Outlet />
+            </PerfectScrollbar>
           </div>
         </div>
 
       </div>
     </>
-
-
-
   );
 }
 

@@ -5,6 +5,8 @@ import { apiSaveNewQuiz } from '../../../Service/apiService'
 import { toast } from 'react-toastify'
 import TableQuiz from './TableQuiz';
 import Accordion from 'react-bootstrap/Accordion';
+import UpdateQA from './UpdateQA';
+import AssignQuiz from './AssignQuiz';
 const options = [
     { value: 'EASY', label: 'EASY' },
     { value: 'MEDIUM', label: 'MEDIUM' },
@@ -72,6 +74,7 @@ const ManageQuiz = () => {
                                     />
                                     <label >Description</label>
                                 </div>
+                                <hr />
                                 <div className='select-container'>
                                     <Select
                                         defaultValue={type}
@@ -97,14 +100,26 @@ const ManageQuiz = () => {
                                     >Save</button>
                                 </div>
                             </fieldset>
+                            <div className='list-detail'>
+                                <TableQuiz />
+                            </div>
                         </Accordion.Body>
                     </Accordion.Item>
-
+                    <Accordion.Item eventKey="1">
+                        <Accordion.Header>Update Q/A Quizzes</Accordion.Header>
+                        <Accordion.Body>
+                            <UpdateQA />
+                        </Accordion.Body>
+                    </Accordion.Item>
+                    <Accordion.Item eventKey="2">
+                        <Accordion.Header>Assign to Users</Accordion.Header>
+                        <Accordion.Body>
+                            <AssignQuiz />
+                        </Accordion.Body>
+                    </Accordion.Item>
                 </Accordion>
 
-                <div className='list-detail'>
-                    <TableQuiz />
-                </div>
+
 
 
             </div>

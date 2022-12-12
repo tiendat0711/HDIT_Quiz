@@ -6,6 +6,7 @@ import './DetailQuiz.scss'
 import { useState } from 'react';
 import Question from './Question';
 import ModalResult from './ModalResult';
+import RightContent from './RightContent/Content';
 
 const DetailQuiz = (props) => {
     const [dataQuiz, setDataQuiz] = useState([]);
@@ -170,7 +171,10 @@ const DetailQuiz = (props) => {
                 </div>
             </div>
             <div className='right-content'>
-
+                <RightContent
+                    dataQuiz={dataQuiz}
+                    handleFinish={handleFinish}
+                />
             </div>
             <ModalResult
                 show={isShowModalResult}

@@ -1,4 +1,4 @@
-import './Questions.scss'
+import './UpdateQA.scss'
 import Select from 'react-select';
 import { useState, useEffect } from 'react';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
@@ -8,9 +8,9 @@ import { AiOutlineMinusCircle, AiFillPlusSquare } from "react-icons/ai"
 import { RiImageAddFill } from "react-icons/ri"
 import { v4 as uuidv4 } from 'uuid'
 import _ from 'lodash'
-import { apiGetQuizAllForAdmin, apiCreateQuestionForQuiz, apiCreateAnswersForQuestion } from "../../../Service/apiService";
+import { apiGetQuizAllForAdmin, apiCreateQuestionForQuiz, apiCreateAnswersForQuestion, apiGetQuizWithQA } from "../../../Service/apiService";
 import { toast } from 'react-toastify';
-const Questions = (props) => {
+const UpdateQA = (props) => {
 
     const [selectedQuiz, setSelectedQuiz] = useState({})
     const [listQuiz, setListQuiz] = useState([])
@@ -189,6 +189,9 @@ const Questions = (props) => {
     useEffect(() => {
         fetchQuiz();
     }, [])
+    useEffect(() => {
+        fetchQuizWithQA(selectedQuiz.value)
+    }, [selectedQuiz])
     const fetchQuiz = async () => {
         let res = await apiGetQuizAllForAdmin();
         if (res && res.EC === 0) {
@@ -202,9 +205,13 @@ const Questions = (props) => {
             setListQuiz(newListQuiz);
         }
     }
+    const fetchQuizWithQA = async () => {
+        let res = await apiGetQuizWithQA(selectedQuiz.value);
+        console.log(res)
+    }
     return (
         <div className='questions-container'>
-            <div className='title'>Manage Questions</div>
+
             <div className='add-new-question'>
                 <div className='col-6'>
                     <label className='mb-2'>Select Quiz:</label>
@@ -325,4 +332,4 @@ const Questions = (props) => {
     )
 }
 
-export default Questions;
+export default UpdateQA;

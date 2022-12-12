@@ -1,0 +1,32 @@
+.main-timer {
+    border-bottom: 1px dashed;
+    padding-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+    padding-top: 10px;
+    font-size: 20px;
+}
+
+.main-question {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+
+    .question {
+        border: 1px solid #929292;
+        display: flex;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        margin-top: 20px;
+
+        &:hover {
+            color: red;
+        }
+
+
+    }
+}
